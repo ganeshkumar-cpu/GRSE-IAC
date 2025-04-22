@@ -22,3 +22,6 @@ variable "ec2_instances" {
     ebs_volume    = optional(number)
   }))
 }
+variable "security_groups" {
+  type = any
+}
