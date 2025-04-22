@@ -104,13 +104,66 @@ security_groups = {
   }
 
   "production-2-Gcc-facialrekognition-env-1" = {
-    description = "SG for Production Rekognition"
+    description = "SG for Rekognition Production"
     vpc_id      = "vpc-xxxxxxxx"
     ingress = [
       { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
       { from_port = 80,   to_port = 80,   protocol = "tcp", security_groups = ["sg-098fd46ed398c094b"] },
       { from_port = 3306, to_port = 3306, protocol = "tcp", security_groups = ["sg-0198769af7a1e9548"] },
       { from_port = 0,    to_port = 65535, protocol = "-1", security_groups = ["sg-03ca4c587c4b3ce65"] }
+    ]
+  }
+
+  "Appserver-Dashboard" = {
+    description = "SG for Appserver Dashboard"
+    vpc_id      = "vpc-xxxxxxxx"
+    ingress = [
+      { from_port = 80,   to_port = 80,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 443,  to_port = 443,  protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+    ]
+  }
+
+  "Dashboard-DB server" = {
+    description = "SG for Dashboard DB Server"
+    vpc_id      = "vpc-xxxxxxxx"
+    ingress = [
+      { from_port = 5432, to_port = 5432, protocol = "tcp", security_groups = ["sg-0a8b623e98e40f13e"] },
+      { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+    ]
+  }
+
+  "Socialmedia-AppServer" = {
+    description = "SG for Social Media App Server"
+    vpc_id      = "vpc-xxxxxxxx"
+    ingress = [
+      { from_port = 80,   to_port = 80,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 443,  to_port = 443,  protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 0,    to_port = 65535, protocol = "-1", security_groups = ["sg-0126a8f90522e478e"] }
+    ]
+  }
+
+  "cloned-v2-Gcc-facialrekognition-env-1" = {
+    description = "SG for Cloned Rekognition Env"
+    vpc_id      = "vpc-xxxxxxxx"
+    ingress = [
+      { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 80,   to_port = 80,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 443,  to_port = 443,  protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 3306, to_port = 3306, protocol = "tcp", security_groups = ["sg-098fd46ed398c094b"] }
+    ]
+  }
+
+  "Milvus-server" = {
+    description = "SG for Milvus Server"
+    vpc_id      = "vpc-xxxxxxxx"
+    ingress = [
+      { from_port = 22,   to_port = 22,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 80,   to_port = 80,   protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 443,  to_port = 443,  protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 19530, to_port = 19530, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] },
+      { from_port = 19121, to_port = 19121, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
     ]
   }
 }
