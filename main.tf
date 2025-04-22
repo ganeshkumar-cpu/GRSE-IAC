@@ -30,3 +30,7 @@ module "ec2_instances" {
   sg_map        = var.sg_map
 }
 
+module "security_groups" {
+  source = "./modules/security_group"
+  security_groups = var.security_groups
+}
