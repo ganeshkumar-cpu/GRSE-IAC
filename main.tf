@@ -21,4 +21,12 @@ module "vpc" {
   igw_name                 = "gcc-vpc-facial-igw"
   nat_gateway_name         = "gcc-vpc-facial-nat-public1-ap-south-1a"
 }
+module "ec2_instances" {
+  source = "./modules/ec2"
+
+  ec2_instances = var.ec2_instances
+  key_name      = var.key_name
+  subnet_map    = var.subnet_map
+  sg_map        = var.sg_map
+}
 
